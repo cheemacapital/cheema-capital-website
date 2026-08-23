@@ -1,0 +1,231 @@
+/* ============================================
+   Cheema Capital — brand tokens
+   ============================================ */
+:root {
+  --navy-950: #0B1220;
+  --navy-900: #101A30;
+  --navy-800: #1B2A4A;
+  --navy-600: #33456B;
+  --gold-500: #C9A227;
+  --gold-600: #A8850F;
+  --paper-050: #F7F5F0;
+  --paper-100: #EFEBE1;
+  --ink-900: #17161B;
+  --ink-600: #4A4A52;
+  --white: #FFFFFF;
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-prose: 'Spectral', Georgia, 'Times New Roman', serif;
+
+  --max-width: 720px;
+  --radius: 10px;
+  --shadow-soft: 0 8px 30px rgba(11, 18, 32, 0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-900);
+  background: var(--paper-050);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; color: var(--navy-950); margin: 0 0 20px; }
+h1 { font-size: clamp(2rem, 5vw, 2.75rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.25rem); }
+p { margin: 0 0 16px; }
+a { color: inherit; }
+
+.eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-600); margin: 0 0 14px; }
+
+/* Header/footer are always visible, on every screen including the first
+   gate question — no more "no branding until inside a track." */
+.site-header { border-bottom: 1px solid var(--paper-100); background: var(--paper-050); }
+.site-footer { border-top: 1px solid var(--paper-100); }
+.site-header__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
+.wordmark { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--navy-950); text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+.header-link { font-size: 0.95rem; font-weight: 600; text-decoration: none; color: var(--navy-800); border-bottom: 2px solid var(--gold-500); padding-bottom: 2px; background: none; border-left: none; border-right: none; border-top: none; cursor: pointer; font-family: var(--font-body); }
+.site-footer__inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px; }
+.site-footer__inner a { text-decoration: none; }
+.site-footer__inner a:hover { text-decoration: underline; }
+
+/* Only one screen is ever mounted at a time (React swaps components rather
+   than toggling display:none like the original vanilla-JS version), so this
+   just supplies the shared layout, no active/inactive class needed. */
+.screen { display: flex; min-height: calc(100vh - 160px); align-items: center; padding: 56px 0 40px; }
+
+/* ---- Gate screens ---- */
+.gate { max-width: 680px; text-align: left; }
+.gate h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); }
+.gate__actions { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+.gate-btn { padding: 20px 44px; font-size: 1.15rem; font-weight: 600; font-family: var(--font-body); border-radius: var(--radius); cursor: pointer; transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease; }
+.gate-btn--yes { background: var(--navy-950); color: var(--white); border: none; box-shadow: var(--shadow-soft); }
+.gate-btn--yes:hover { background: var(--navy-800); transform: translateY(-1px); }
+.gate-btn--no { background: transparent; color: var(--navy-800); border: 2px solid var(--paper-100); }
+.gate-btn--no:hover { border-color: var(--navy-600); }
+
+.entry__sub { font-size: 1.1rem; color: var(--ink-600); max-width: 56ch; }
+.skip-link { display: inline-block; margin-top: 18px; font-size: 0.95rem; color: var(--navy-600); text-decoration: none; border-bottom: 1px solid transparent; background: none; border-top: none; border-left: none; border-right: none; cursor: pointer; font-family: var(--font-body); padding: 0; }
+.skip-link:hover { border-bottom-color: var(--navy-600); }
+.funnel { width: 100%; }
+.progress { width: 100%; height: 6px; background: var(--paper-100); border-radius: 999px; overflow: hidden; margin-bottom: 10px; }
+.progress__fill { height: 100%; width: 0%; background: var(--gold-500); transition: width 0.35s ease; }
+.progress__label { font-size: 0.85rem; color: var(--ink-600); margin-bottom: 8px; }
+.progress__section { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gold-600); margin-bottom: 32px; }
+.question h2 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 28px; }
+.options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 8px; }
+.option-btn { text-align: left; width: 100%; padding: 18px 20px; font-family: var(--font-body); font-size: 1.05rem; font-weight: 500; color: var(--ink-900); background: var(--white); border: 2px solid var(--paper-100); border-radius: var(--radius); cursor: pointer; transition: border-color 0.15s ease, transform 0.1s ease, background 0.15s ease; }
+.option-btn:hover { border-color: var(--gold-500); background: #FFFDF7; }
+.option-btn:active { transform: scale(0.99); }
+.option-btn:focus-visible { outline: 3px solid var(--navy-600); outline-offset: 2px; }
+.funnel__nav { margin-top: 20px; }
+.readout { max-width: 640px; }
+
+/* Narrative/insight copy reads as serif prose; functional and transactional
+   copy (disclosures, follow-up questions, UI microcopy) stays on the sans
+   body font. That split is deliberate: it's what makes the prose read as
+   considered rather than the sans font being used for everything. */
+.readout__body p { font-family: var(--font-prose); font-size: 1.15rem; line-height: 1.7; color: var(--ink-600); }
+.readout__body strong { font-weight: 600; font-style: italic; color: var(--navy-950); }
+.disclosure { font-size: 0.9rem; color: var(--ink-600); background: var(--paper-100); border-radius: var(--radius); padding: 14px 18px; margin: 4px 0 20px; }
+.kicker { font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; color: var(--ink-600); margin: -10px 0 26px; }
+
+/* The single-sentence takeaway on each readout screen, pulled out as its
+   own visual moment instead of buried in a paragraph. */
+.pullquote { font-family: var(--font-display); font-weight: 500; font-style: italic; font-size: clamp(1.9rem, 4.4vw, 2.65rem); line-height: 1.18; letter-spacing: -0.01em; color: var(--navy-950); margin: 0 0 30px; }
+.pullquote .accent { color: var(--gold-600); }
+
+/* ---- End-of-track follow-up: a yes/no gate instead of a CTA button, then a
+   lead-capture form on "yes" (name/organization/position/email) — no report
+   content is ever emailed to a visitor. ---- */
+.followup { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--paper-100); display: flex; flex-direction: column; gap: 20px; }
+.followup__question p { font-size: 1rem; font-weight: 600; color: var(--navy-950); margin: 0 0 10px; }
+.followup__actions { display: flex; gap: 10px; }
+.btn--small { padding: 9px 20px; font-size: 0.9rem; }
+.followup__confirm { font-size: 0.95rem; color: var(--ink-600); margin: 0; }
+.email-capture__row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.email-capture__row input[type="email"] { flex: 1; min-width: 200px; padding: 12px 14px; border: 2px solid var(--paper-100); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.95rem; color: var(--ink-900); background: var(--white); }
+.email-capture__row input[type="email"]:focus { outline: none; border-color: var(--gold-500); }
+.email-capture__note { font-size: 0.85rem; color: var(--ink-600); margin: 8px 0 0; min-height: 1em; }
+.lead-capture__intro { font-size: 0.95rem; color: var(--ink-600); margin: 0 0 14px; }
+.lead-capture__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.lead-capture__grid input { padding: 12px 14px; border: 2px solid var(--paper-100); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.95rem; color: var(--ink-900); background: var(--white); width: 100%; }
+.lead-capture__grid input:focus { outline: none; border-color: var(--gold-500); }
+.dive-deeper__prompt { font-size: 1rem; color: var(--ink-600); border-top: 1px solid var(--paper-100); padding-top: 20px; margin-top: 4px; }
+
+/* ---- Scorecard (business report) ---- */
+.scorecard { list-style: none; margin: 0 0 28px; padding: 0; border-top: 1px solid var(--paper-100); }
+.scorecard__row { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--paper-100); }
+.scorecard__name { font-family: var(--font-prose); flex: 0 0 168px; font-weight: 600; font-size: 1.02rem; color: var(--navy-950); }
+.scorecard__bar { flex: 1; height: 8px; background: var(--paper-100); border-radius: 999px; overflow: hidden; }
+.scorecard__fill { display: block; height: 100%; background: var(--gold-500); border-radius: 999px; }
+.scorecard__severity { font-family: var(--font-prose); font-style: italic; flex: 0 0 120px; text-align: right; font-size: 0.9rem; color: var(--ink-600); }
+
+.simple-page { max-width: 640px; }
+.simple-page__lead { font-family: var(--font-prose); font-size: 1.2rem; line-height: 1.7; color: var(--ink-600); }
+.simple-page__actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 28px; }
+/* .btn-text carries its own margin-top for when it stands alone under a
+   paragraph (e.g. "Start over" on the full report). Inside a button row,
+   that margin is what was making it sit low/cramped next to a primary
+   button instead of centered with it — zero it out here specifically. */
+.simple-page__actions .btn-text { margin-top: 0; }
+
+/* ---- Homepage: extra sections stacked below the hero, so the page has
+   real length and scrolls like a normal site instead of one centered
+   block. ---- */
+.home__inner { max-width: 640px; }
+.home__section { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--paper-100); }
+.home__pillars { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+.home__pillar { display: flex; align-items: baseline; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--paper-100); }
+.home__pillar:last-child { border-bottom: none; padding-bottom: 0; }
+.home__pillar-name { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--navy-950); flex: 0 0 120px; }
+.home__pillar-desc { font-family: var(--font-prose); font-size: 1.02rem; color: var(--ink-600); line-height: 1.5; }
+
+/* ---- Save-to-dashboard offer (full business readout only) ---- */
+.save-dashboard { margin-top: 24px; padding: 20px; background: var(--paper-100); border-radius: var(--radius); }
+.save-dashboard__title { font-size: 1rem; font-weight: 600; color: var(--navy-950); margin: 0 0 6px; }
+.save-dashboard__desc { font-size: 0.92rem; color: var(--ink-600); margin: 0; }
+
+/* ============================================
+   Dashboard — a distinct "app" register from the marketing/funnel
+   screens above: a persistent header + tab bar instead of one screen at
+   a time, but built from the same tokens (navy/gold/paper, same three
+   font families) so it still reads as the same product.
+   ============================================ */
+.dash { min-height: 100vh; display: flex; flex-direction: column; }
+.dash-unconfigured, .dash-login { max-width: 560px; padding: 80px 24px; margin: 0 auto; }
+
+.dash-header { border-bottom: 1px solid var(--paper-100); background: var(--white); }
+.dash-header__inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; }
+.dash-header__right { display: flex; align-items: center; gap: 16px; }
+.dash-header__email { font-size: 0.88rem; color: var(--ink-600); }
+
+.dash-tabs { border-bottom: 1px solid var(--paper-100); background: var(--paper-050); }
+.dash-tabs__inner { display: flex; gap: 4px; padding: 0 24px; }
+.dash-tab { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--ink-600); background: none; border: none; border-bottom: 2px solid transparent; padding: 16px 14px; cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease; }
+.dash-tab:hover { color: var(--navy-800); }
+.dash-tab--active { color: var(--navy-950); border-bottom-color: var(--gold-500); }
+
+.dash-content { flex: 1; width: 100%; padding: 48px 24px 80px; }
+.dash-panel { max-width: 680px; }
+.dash-panel__meta { font-size: 0.85rem; color: var(--ink-600); margin-top: 16px; }
+.dash-panel__raw { margin-top: 24px; font-size: 0.92rem; color: var(--ink-600); }
+.dash-panel__raw summary { cursor: pointer; font-weight: 600; color: var(--navy-800); }
+.dash-panel__raw ol { margin: 12px 0 0; padding-left: 20px; }
+.dash-panel__raw li { margin-bottom: 6px; }
+
+.dash-login__form { margin-top: 8px; }
+
+.dash-notes__textarea { width: 100%; min-height: 320px; margin-top: 16px; padding: 16px; border: 2px solid var(--paper-100); border-radius: var(--radius); font-family: var(--font-prose); font-size: 1.02rem; line-height: 1.6; color: var(--ink-900); background: var(--white); resize: vertical; }
+.dash-notes__textarea:focus { outline: none; border-color: var(--gold-500); }
+
+.dash-chat { display: flex; flex-direction: column; }
+.dash-chat__log { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; max-height: 50vh; overflow-y: auto; padding-right: 4px; }
+.dash-chat__empty { font-size: 0.92rem; color: var(--ink-600); }
+.dash-chat__bubble { max-width: 80%; padding: 12px 16px; border-radius: var(--radius); font-family: var(--font-body); font-size: 0.96rem; line-height: 1.5; white-space: pre-wrap; }
+.dash-chat__bubble--user { align-self: flex-end; background: var(--navy-950); color: var(--white); }
+.dash-chat__bubble--assistant { align-self: flex-start; background: var(--paper-100); color: var(--ink-900); }
+.dash-chat__bubble--pending { color: var(--ink-600); }
+.dash-chat__form { display: flex; gap: 10px; margin-top: 16px; }
+.dash-chat__form input[type="text"] { flex: 1; padding: 12px 14px; border: 2px solid var(--paper-100); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.95rem; color: var(--ink-900); background: var(--white); }
+.dash-chat__form input[type="text"]:focus { outline: none; border-color: var(--gold-500); }
+
+.btn { display: inline-block; font-family: var(--font-body); font-weight: 600; text-decoration: none; border: none; border-radius: var(--radius); cursor: pointer; transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease; }
+.btn--large { padding: 16px 32px; font-size: 1.1rem; }
+.btn--primary { background: var(--navy-950); color: var(--white); box-shadow: var(--shadow-soft); }
+.btn--primary:hover { background: var(--navy-800); transform: translateY(-1px); }
+.btn--primary:focus-visible { outline: 3px solid var(--gold-500); outline-offset: 2px; }
+.btn--ghost { padding: 12px 22px; font-size: 0.95rem; background: transparent; color: var(--navy-800); border: 2px solid var(--paper-100); }
+.btn--ghost:hover { border-color: var(--navy-600); }
+.btn-text { background: none; border: none; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--navy-600); text-decoration: underline; cursor: pointer; padding: 8px 0; margin-top: 18px; display: inline-block; }
+
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .screen { padding: 40px 0 32px; }
+  .option-btn { padding: 16px 18px; font-size: 1rem; }
+  .site-footer__inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .gate-btn { padding: 18px 32px; width: 100%; text-align: center; }
+  .gate__actions { flex-direction: column; }
+  .scorecard__row { flex-wrap: wrap; }
+  .scorecard__name { flex: 1 0 100%; }
+  .scorecard__severity { flex: 0 0 auto; margin-left: auto; }
+  .lead-capture__grid { grid-template-columns: 1fr; }
+  .home__pillar { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .home__pillar-name { flex: none; }
+  .dash-header__inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .dash-tabs__inner { overflow-x: auto; }
+  .dash-chat__bubble { max-width: 92%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .progress__fill, .option-btn, .btn { transition: none; }
+}
