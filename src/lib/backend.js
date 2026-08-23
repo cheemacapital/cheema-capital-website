@@ -5,7 +5,7 @@
 // URL, postToBackend() is a silent no-op, so the site works exactly the same
 // with or without the backend configured. Same contract as the original
 // vanilla-JS site: the Apps Script code and setup doc need no changes.
-export const WEBHOOK_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+export const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyKHWfn4L9Dztsn1ccmPwvWnCthhr5vpAcs_GyCWINtwILKyaM7TQbuFwmamSOMetFv/exec';
 
 export function generateSessionId() {
   return 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
