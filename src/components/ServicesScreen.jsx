@@ -3,7 +3,7 @@ export default function ServicesScreen({ onTakeDiagnostic }) {
     <section className="screen" aria-live="polite">
       <div className="wrap simple-page">
         <p className="eyebrow">What we do</p>
-        <h1>Cheema Capital advises small and midsized business owners on the systems, brand, and go-to-market gaps holding back growth.</h1>
+        <h1>We advise small and midsized business owners on the systems, brand, and go-to-market gaps holding back growth.</h1>
         <p className="simple-page__lead">
           Work covers three areas: internal systems and processes, external brand and web
           presence, and positioning and go-to-market strategy. Each engagement is scoped to the
