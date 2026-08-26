@@ -10,8 +10,8 @@ export default function ServicesScreen({ onTakeDiagnostic }) {
           specific gaps identified, not a fixed package.
         </p>
         <p className="simple-page__lead">
-          Cheema Capital also provides wealth education, with a specialty in crypto and digital
-          assets. This practice is education-focused while Series 65 licensure is in progress.
+          Cheema Capital also provides wealth education, with a specialty in digital assets. This
+          practice is education-focused while Series 65 licensure is in progress.
         </p>
         <p className="simple-page__lead">
           For founders building a business before launch, Cheema Capital consults on positioning
