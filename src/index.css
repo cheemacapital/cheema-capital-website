@@ -81,6 +81,9 @@ a { color: inherit; }
 .gate-btn--yes:hover { background: var(--navy-800); transform: translateY(-1px); }
 .gate-btn--no { background: transparent; color: var(--navy-800); border: 2px solid var(--paper-100); }
 .gate-btn--no:hover { border-color: var(--navy-600); }
+.gate__local { margin-top: 28px; }
+.gate__local-link { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--ink-600); text-decoration: none; border-bottom: 2px solid var(--gold-500); padding-bottom: 2px; }
+.gate__local-link:hover { color: var(--navy-950); }
 
 .entry__sub { font-size: 1.1rem; color: var(--ink-600); max-width: 56ch; }
 .skip-link { display: inline-block; margin-top: 18px; font-size: 0.95rem; color: var(--navy-600); text-decoration: none; border-bottom: 1px solid transparent; background: none; border-top: none; border-left: none; border-right: none; cursor: pointer; font-family: var(--font-body); padding: 0; }

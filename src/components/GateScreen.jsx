@@ -9,6 +9,9 @@ export default function GateScreen({ onYes, onNo }) {
           <button type="button" className="gate-btn gate-btn--yes" onClick={onYes}>Yes</button>
           <button type="button" className="gate-btn gate-btn--no" onClick={onNo}>No</button>
         </div>
+        <div className="gate__local">
+          <a href="/champaign-urbana/" className="gate__local-link">Based in Champaign-Urbana? &rarr;</a>
+        </div>
       </div>
     </section>
   );
