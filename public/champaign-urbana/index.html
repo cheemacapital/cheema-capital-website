@@ -47,17 +47,9 @@
   }
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-  .cu-compass {
-    position: absolute;
-    top: -18vw;
-    right: -18vw;
-    width: 58vw;
-    max-width: 620px;
-    min-width: 340px;
-    height: auto;
-    opacity: 0.9;
-    pointer-events: none;
-  }
+  .cu-visual { flex: 0 0 auto; width: min(38vw, 420px); display: flex; flex-direction: column; align-items: center; }
+  .cu-compass { width: 100%; height: auto; overflow: visible; }
+  .cu-visual-label { font-family: var(--font-body); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-500); margin-top: 18px; }
 
   .cu-header { border-bottom: 1px solid var(--navy-800); position: relative; z-index: 1; }
   .cu-header__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
@@ -65,7 +57,8 @@
   .cu-header-link { font-size: 0.95rem; font-weight: 600; text-decoration: none; color: var(--paper-050); border-bottom: 2px solid var(--gold-500); padding-bottom: 2px; }
 
   main { flex: 1; display: flex; align-items: center; position: relative; z-index: 1; padding: 64px 0; }
-  .cu-hero { max-width: 620px; }
+  .cu-content { display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+  .cu-hero { max-width: 560px; flex: 1 1 480px; }
   .cu-eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-500); margin: 0 0 18px; }
   .cu-hero h1 { font-family: var(--font-display); font-weight: 600; line-height: 1.16; color: var(--paper-050); margin: 0 0 24px; font-size: clamp(2rem, 4.6vw, 2.9rem); }
   .cu-hero p { font-family: var(--font-prose); font-size: clamp(1.05rem, 1.6vw, 1.15rem); line-height: 1.6; color: var(--ink-600); margin: 0 0 32px; max-width: 540px; }
@@ -73,6 +66,12 @@
   .cu-btn { display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; text-decoration: none; padding: 16px 30px; border-radius: 10px; background: var(--gold-500); color: var(--navy-950); }
   .cu-btn:hover { background: var(--gold-600); }
   .cu-link { font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; text-decoration: underline; color: var(--paper-050); }
+
+  @media (max-width: 900px) {
+    .cu-content { flex-direction: column; gap: 40px; }
+    .cu-hero { max-width: 100%; }
+    .cu-visual { width: min(60vw, 300px); }
+  }
 
   .cu-footer { border-top: 1px solid var(--navy-800); position: relative; z-index: 1; }
   .cu-footer__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 26px; padding-bottom: 26px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px; }
@@ -89,28 +88,10 @@
 
   @media (max-width: 560px) {
     .cu-footer__inner { flex-direction: column; align-items: flex-start; gap: 8px; }
-    .cu-compass { top: -12vw; right: -28vw; width: 78vw; }
   }
 </style>
 </head>
 <body>
-
-<svg class="cu-compass" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <circle cx="310" cy="310" r="260" stroke="#1B2A4A" stroke-width="1" fill="none"/>
-  <circle cx="310" cy="310" r="200" stroke="#1B2A4A" stroke-width="1" fill="none"/>
-  <circle cx="310" cy="310" r="140" stroke="#1B2A4A" stroke-width="1" fill="none"/>
-  <line x1="310" y1="20" x2="310" y2="600" stroke="#1B2A4A" stroke-width="1"/>
-  <line x1="20" y1="310" x2="600" y2="310" stroke="#1B2A4A" stroke-width="1"/>
-  <line x1="90" y1="90" x2="530" y2="530" stroke="#1B2A4A" stroke-width="1"/>
-  <line x1="530" y1="90" x2="90" y2="530" stroke="#1B2A4A" stroke-width="1"/>
-  <text x="310" y="55" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#33456B" text-anchor="middle">N</text>
-  <text x="310" y="578" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#33456B" text-anchor="middle">S</text>
-  <text x="562" y="316" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#33456B" text-anchor="middle">E</text>
-  <text x="58" y="316" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#33456B" text-anchor="middle">W</text>
-  <polygon points="310,140 330,310 310,340 290,310" fill="#C9A227"/>
-  <polygon points="310,480 330,310 310,340 290,310" fill="#4A4A52"/>
-  <circle cx="310" cy="310" r="10" fill="#F7F5F0"/>
-</svg>
 
 <header class="cu-header">
   <div class="wrap cu-header__inner">
@@ -120,7 +101,7 @@
 </header>
 
 <main>
-  <div class="wrap">
+  <div class="wrap cu-content">
     <div class="cu-hero">
       <p class="cu-eyebrow">Champaign-Urbana Businesses</p>
       <h1>We help Champaign-Urbana businesses fix gaps in their online presence.</h1>
@@ -129,6 +110,33 @@
         <a href="/" class="cu-btn">Take the diagnostic</a>
         <a href="mailto:hello@cheemacapital.ai" class="cu-link">Email us</a>
       </div>
+    </div>
+
+    <div class="cu-visual">
+      <svg class="cu-compass" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="compassGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#C9A227" stop-opacity="0.16"/>
+            <stop offset="100%" stop-color="#C9A227" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="310" cy="310" r="300" fill="url(#compassGlow)"/>
+        <circle cx="310" cy="310" r="260" stroke="#33456B" stroke-width="1.25" fill="none"/>
+        <circle cx="310" cy="310" r="200" stroke="#33456B" stroke-width="1.25" fill="none"/>
+        <circle cx="310" cy="310" r="140" stroke="#33456B" stroke-width="1.25" fill="none"/>
+        <line x1="310" y1="20" x2="310" y2="600" stroke="#33456B" stroke-width="1.25"/>
+        <line x1="20" y1="310" x2="600" y2="310" stroke="#33456B" stroke-width="1.25"/>
+        <line x1="90" y1="90" x2="530" y2="530" stroke="#1B2A4A" stroke-width="1"/>
+        <line x1="530" y1="90" x2="90" y2="530" stroke="#1B2A4A" stroke-width="1"/>
+        <text x="310" y="50" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#8A93A8" text-anchor="middle">N</text>
+        <text x="310" y="583" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#8A93A8" text-anchor="middle">S</text>
+        <text x="567" y="316" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#8A93A8" text-anchor="middle">E</text>
+        <text x="53" y="316" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#8A93A8" text-anchor="middle">W</text>
+        <polygon points="310,120 336,310 310,344 284,310" fill="#C9A227"/>
+        <polygon points="310,500 336,310 310,344 284,310" fill="#4A4A52"/>
+        <circle cx="310" cy="310" r="13" fill="#F7F5F0"/>
+      </svg>
+      <div class="cu-visual-label">Champaign-Urbana</div>
     </div>
   </div>
 </main>
