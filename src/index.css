@@ -81,6 +81,14 @@ a { color: inherit; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Pairs with FunnelApp's setScreen wrapper (SCREEN_LEAVE_MS): the outgoing
+   screen fades out over this transition BEFORE React swaps it for the next
+   one, which then plays screen-enter above. Without this, a screen change
+   was an instant unmount/mount cut with only the incoming half animated —
+   this is what makes it read as one continuous crossfade instead. */
+main { transition: opacity 0.2s ease; }
+main.main-leaving { opacity: 0; }
+
 /* ---- Gate screens ---- */
 .gate { max-width: 680px; text-align: left; }
 .gate h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); }
@@ -251,4 +259,5 @@ a { color: inherit; }
   html { scroll-behavior: auto; }
   .progress__fill, .option-btn, .btn { transition: none; }
   .screen { animation: none; }
+  main { transition: none; }
 }

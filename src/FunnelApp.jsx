@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   QUESTIONS, WEALTH_QUESTIONS, ASPIRING_QUESTIONS,
   SECTION_LABELS, SEVERITY_LABELS, BASIC_CHECKPOINT
@@ -34,8 +34,37 @@ import ServicesScreen from './components/ServicesScreen.jsx';
 // dashboard is SaveToDashboard on the full readout, which stages a
 // result in localStorage and hands off to Supabase auth; nothing here
 // imports Supabase directly.
+// How long the outgoing screen has to fade out (via the `main-leaving`
+// class in index.css) before the incoming one swaps in and plays its own
+// fade-in (the `screen-enter` keyframe on `.screen`, already shared by
+// every screen component). Keep this in sync with that CSS transition's
+// duration below — it's what turns a plain unmount/mount cut into an
+// actual out-then-in crossfade.
+const SCREEN_LEAVE_MS = 200;
+
 export default function FunnelApp() {
-  const [screen, setScreen] = useState('gate');
+  const [screen, setScreenState] = useState('gate');
+  const [leaving, setLeaving] = useState(false);
+  const pendingScreenRef = useRef(null);
+  const leaveTimeoutRef = useRef(null);
+
+  // Every existing call site below still just calls `setScreen(next)` —
+  // this wrapper is what makes ALL of them (header buttons, gate yes/no,
+  // funnel-to-readout, everything) fade the outgoing screen out before
+  // swapping, instead of cutting instantly. No call site needed to change.
+  function setScreen(next) {
+    if (next === screen) return;
+    window.clearTimeout(leaveTimeoutRef.current);
+    pendingScreenRef.current = next;
+    setLeaving(true);
+    leaveTimeoutRef.current = window.setTimeout(() => {
+      setScreenState(pendingScreenRef.current);
+      setLeaving(false);
+    }, SCREEN_LEAVE_MS);
+  }
+
+  useEffect(() => () => window.clearTimeout(leaveTimeoutRef.current), []);
+
   const [sessionId, setSessionId] = useState(() => generateSessionId());
 
   // Business track
@@ -262,7 +291,7 @@ export default function FunnelApp() {
   return (
     <>
       <Header onLogoClick={goToGate} onServicesClick={goToServices} />
-      <main>{screenEl}</main>
+      <main className={leaving ? 'main-leaving' : ''}>{screenEl}</main>
       <Footer />
     </>
   );
