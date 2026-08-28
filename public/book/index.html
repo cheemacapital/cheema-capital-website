@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book a Call — Cheema Capital</title>
+<meta name="description" content="Book a short intro call with Cheema Capital." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Cheema Capital" />
+<meta property="og:title" content="Book a Call — Cheema Capital" />
+<meta property="og:description" content="Book a short intro call with Cheema Capital." />
+<meta property="og:url" content="https://cheemacapital.ai/book/" />
+<meta name="twitter:card" content="summary" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy-950: #0B1220;
+    --navy-800: #1B2A4A;
+    --navy-600: #33456B;
+    --gold-500: #C9A227;
+    --gold-600: #A8850F;
+    --paper-050: #F7F5F0;
+    --paper-100: #EFEBE1;
+    --ink-900: #17161B;
+    --ink-600: #4A4A52;
+    --white: #FFFFFF;
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-prose: 'Spectral', Georgia, 'Times New Roman', serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: var(--font-body);
+    background: var(--paper-050);
+    color: var(--ink-900);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+  .site-header { border-bottom: 1px solid var(--paper-100); background: var(--paper-050); }
+  .site-header__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
+  .wordmark { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--navy-950); text-decoration: none; }
+  .header-link { font-size: 0.95rem; font-weight: 600; text-decoration: none; color: var(--navy-800); border-bottom: 2px solid var(--gold-500); padding-bottom: 2px; }
+
+  .bk-main { padding: 64px 0 80px; }
+  .bk-content { max-width: 680px; margin: 0 auto; }
+  .bk-eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-600); margin: 0 0 16px; }
+  .bk-content h1 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; color: var(--navy-950); margin: 0 0 20px; font-size: clamp(2rem, 5vw, 2.75rem); }
+  .bk-lead { font-family: var(--font-prose); font-size: 1.15rem; line-height: 1.65; color: var(--ink-600); margin: 0 0 40px; max-width: 600px; }
+  .bk-embed-wrap { border: 1px solid var(--paper-100); border-radius: 14px; overflow: hidden; background: var(--paper-050); }
+
+  .site-footer { border-top: 1px solid var(--paper-100); }
+  .site-footer__inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px; }
+  .site-footer__inner a { color: var(--ink-600); text-decoration: none; }
+  .site-footer__inner a:hover { text-decoration: underline; }
+
+  @media (max-width: 560px) {
+    .site-footer__inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+
+  /* Same fade+rise-on-load / fade-out-before-nav pattern used on
+     /champaign-urbana (see that page and FunnelApp.jsx's SCREEN_LEAVE_MS)
+     — this is a plain static page too, so JS stands in for the SPA's
+     unmount/mount crossfade on the header's internal links. */
+  .bk-page { animation: bk-enter 0.32s ease both; transition: opacity 0.2s ease; }
+  .bk-page.bk-leaving { opacity: 0; }
+  @keyframes bk-enter {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bk-page { animation: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bk-page">
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a href="/" class="wordmark">Cheema Capital</a>
+    <a href="/" class="header-link">What we do</a>
+  </div>
+</header>
+
+<main class="bk-main">
+  <div class="wrap bk-content">
+    <p class="bk-eyebrow">Book a call</p>
+    <h1>Let's talk through what you're working with.</h1>
+    <p class="bk-lead">A short intro call to see whether Cheema Capital is the right fit — no pitch, just a conversation about where things stand.</p>
+
+    <div class="bk-embed-wrap">
+      <!-- Calendly inline widget begin -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/zain-cheemacapital/cheema-capital-intro-call?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f7f5f0&text_color=17161b&primary_color=0b1220" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <!-- Calendly inline widget end -->
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <span>© 2026 Cheema Capital</span>
+    <a href="mailto:hello@cheemacapital.ai">hello@cheemacapital.ai</a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  // Keep in sync with SCREEN_LEAVE_MS in src/FunnelApp.jsx.
+  var LEAVE_MS = 200;
+  var page = document.querySelector('.bk-page');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (page) {
+    page.addEventListener('animationend', function onEnd(e) {
+      if (e.target === page && e.animationName === 'bk-enter') {
+        page.style.animation = 'none';
+      }
+    }, { once: true });
+  }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    // Only intercept the same-site nav links (wordmark, "What we do") —
+    // mailto: links pass through untouched.
+    if (link.getAttribute('href') !== '/') return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    e.preventDefault();
+    if (!page || reduceMotion) {
+      window.location.href = link.href;
+      return;
+    }
+    page.classList.add('bk-leaving');
+    window.setTimeout(function () {
+      window.location.href = link.href;
+    }, LEAVE_MS);
+  });
+})();
+</script>
+
+</body>
+</html>
