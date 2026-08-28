@@ -52,6 +52,9 @@
   .cu-header__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
   .cu-wordmark { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--paper-050); text-decoration: none; }
   .cu-header-link { font-size: 0.95rem; font-weight: 600; text-decoration: none; color: var(--paper-050); border-bottom: 2px solid var(--gold-500); padding-bottom: 2px; }
+  .cu-header__nav { display: flex; align-items: center; gap: 22px; }
+  .cu-header-book-btn { font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; text-decoration: none; color: var(--navy-950); background: var(--gold-500); padding: 9px 18px; border-radius: 8px; transition: background 0.15s ease, transform 0.1s ease; }
+  .cu-header-book-btn:hover { background: var(--gold-600); transform: translateY(-1px); }
 
   main { flex: 1; display: flex; align-items: center; position: relative; z-index: 1; padding: 64px 0; }
   .cu-content { display: flex; align-items: center; justify-content: space-between; gap: 48px; }
@@ -76,6 +79,9 @@
   .cu-footer__inner a:hover { text-decoration: underline; }
 
   @media (max-width: 560px) {
+    .cu-header__nav { gap: 10px; }
+    .cu-header-link { font-size: 0.85rem; }
+    .cu-header-book-btn { font-size: 0.8rem; padding: 8px 12px; }
     .cu-footer__inner { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 
@@ -103,7 +109,10 @@
 <header class="cu-header">
   <div class="wrap cu-header__inner">
     <a href="/" class="cu-wordmark">Cheema Capital</a>
-    <a href="/" class="cu-header-link">What we do</a>
+    <div class="cu-header__nav">
+      <a href="/" class="cu-header-link">What we do</a>
+      <a href="/book/" class="cu-header-book-btn">Book a call</a>
+    </div>
   </div>
 </header>
 
@@ -183,9 +192,10 @@
     var link = e.target.closest('a');
     if (!link) return;
     // Only intercept the same-site nav links (wordmark, "What we do",
-    // "Take the diagnostic" all point at "/") — mailto: links and any
-    // future external links pass through untouched.
-    if (link.getAttribute('href') !== '/') return;
+    // "Take the diagnostic" -> "/"; "Book a call" -> "/book/") — mailto:
+    // links and any future external links pass through untouched.
+    var href = link.getAttribute('href');
+    if (href !== '/' && href !== '/book/') return;
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
     e.preventDefault();

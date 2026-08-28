@@ -309,7 +309,7 @@ export default function FunnelApp() {
 
   return (
     <>
-      <Header onLogoClick={goToGate} onServicesClick={goToServices} />
+      <Header onLogoClick={goToGate} onServicesClick={goToServices} onBookClick={() => navigateExternal('/book/')} />
       <main className={leaving ? 'main-leaving' : ''}>{screenEl}</main>
       <Footer />
     </>
