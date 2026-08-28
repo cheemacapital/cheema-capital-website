@@ -15,9 +15,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-<!-- Calendly badge widget begin -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<!-- Calendly badge widget end -->
 <style>
   :root {
     --navy-950: #0B1220;
@@ -77,14 +74,6 @@
   .cu-footer__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 26px; padding-bottom: 26px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px; }
   .cu-footer__inner a { color: var(--ink-600); text-decoration: none; }
   .cu-footer__inner a:hover { text-decoration: underline; }
-
-  /* Reserve room on the right for the Calendly badge widget (fixed
-     bottom-right) so it never overlaps the footer email link — same fix
-     applied on the main site. Below 560px the footer stacks, so no
-     reservation is needed there. */
-  @media (min-width: 561px) {
-    .cu-footer__inner { padding-right: 240px; }
-  }
 
   @media (max-width: 560px) {
     .cu-footer__inner { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -211,11 +200,6 @@
   });
 })();
 </script>
-
-<!-- Calendly badge widget begin -->
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/zain-cheemacapital/cheema-capital-intro-call', text: 'Cheema Capital - Intro Call', color: '#1a1a1a', textColor: '#ffffff', branding: true }); }</script>
-<!-- Calendly badge widget end -->
 
 </body>
 </html>

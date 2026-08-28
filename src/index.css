@@ -57,16 +57,6 @@ a { color: inherit; }
 .site-footer__inner a { text-decoration: none; }
 .site-footer__inner a:hover { text-decoration: underline; }
 
-/* The Calendly badge widget floats fixed at the bottom-right of the
-   viewport. On wider screens the footer email link sits flush against
-   that same corner (justify-content: space-between), so it renders
-   underneath the badge. Reserve space on the right so the email stays
-   clear of it — below 560px the footer already stacks to the left
-   (see the max-width: 560px block), so no reservation is needed there. */
-@media (min-width: 561px) {
-  .site-footer__inner { padding-right: 240px; }
-}
-
 /* Only one screen is ever mounted at a time (React swaps components rather
    than toggling display:none like the original vanilla-JS version), so this
    just supplies the shared layout, no active/inactive class needed. */
