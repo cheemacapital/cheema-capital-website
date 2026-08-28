@@ -65,6 +65,25 @@ export default function FunnelApp() {
 
   useEffect(() => () => window.clearTimeout(leaveTimeoutRef.current), []);
 
+  // For the one link that leaves the SPA entirely (GateScreen's "Based in
+  // Champaign-Urbana?" -> the static /champaign-urbana/ page): a real page
+  // navigation can't be "swapped" like setScreen above, but it can still
+  // fade out first instead of cutting instantly — same SCREEN_LEAVE_MS,
+  // same main-leaving class, so it reads as one continuous transition
+  // instead of the SPA suddenly cutting to a browser navigation.
+  function navigateExternal(href) {
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      window.location.href = href;
+      return;
+    }
+    setLeaving(true);
+    window.clearTimeout(leaveTimeoutRef.current);
+    leaveTimeoutRef.current = window.setTimeout(() => {
+      window.location.href = href;
+    }, SCREEN_LEAVE_MS);
+  }
+
   const [sessionId, setSessionId] = useState(() => generateSessionId());
 
   // Business track
@@ -255,7 +274,7 @@ export default function FunnelApp() {
   let screenEl;
   switch (screen) {
     case 'gate':
-      screenEl = <GateScreen onYes={handleGateYes} onNo={handleGateNo} />;
+      screenEl = <GateScreen onYes={handleGateYes} onNo={handleGateNo} onChampaignClick={() => navigateExternal('/champaign-urbana/')} />;
       break;
     case 'aspiringGate':
       screenEl = <AspiringGateScreen onYes={handleAspiringYes} onNo={handleAspiringNo} />;

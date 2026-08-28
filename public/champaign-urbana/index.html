@@ -89,9 +89,27 @@
   @media (max-width: 560px) {
     .cu-footer__inner { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
+
+  /* Matches the fade+rise the main funnel app (FunnelApp.jsx / index.css)
+     plays on every screen change: .cu-page fades+rises in on load, and the
+     inline script below fades it out for 0.2s before an internal nav link
+     (wordmark, "What we do", "Take the diagnostic") actually navigates —
+     this is a plain static page, so JS has to stand in for the SPA's
+     unmount/mount crossfade. */
+  .cu-page { animation: cu-enter 0.32s ease both; transition: opacity 0.2s ease; }
+  .cu-page.cu-leaving { opacity: 0; }
+  @keyframes cu-enter {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cu-page { animation: none; transition: none; }
+  }
 </style>
 </head>
 <body>
+
+<div class="cu-page">
 
 <header class="cu-header">
   <div class="wrap cu-header__inner">
@@ -147,6 +165,52 @@
     <a href="mailto:hello@cheemacapital.ai">hello@cheemacapital.ai</a>
   </div>
 </footer>
+
+</div>
+
+<script>
+(function () {
+  // Keep in sync with SCREEN_LEAVE_MS in src/FunnelApp.jsx — same fade-out
+  // duration, so this page's exit feels like the same app as the funnel.
+  var LEAVE_MS = 200;
+  var page = document.querySelector('.cu-page');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // The entrance keyframe animation above holds opacity:1 via fill-mode
+  // "both" after it finishes, which then blocks the .cu-leaving opacity
+  // transition below from ever running (a running/filled CSS animation
+  // takes precedence over a transition on the same property). Clearing the
+  // animation via inline style once it's done — leaving the same visual
+  // state in place — frees opacity back up for the leave transition.
+  if (page) {
+    page.addEventListener('animationend', function onEnd(e) {
+      if (e.target === page && e.animationName === 'cu-enter') {
+        page.style.animation = 'none';
+      }
+    }, { once: true });
+  }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    // Only intercept the same-site nav links (wordmark, "What we do",
+    // "Take the diagnostic" all point at "/") — mailto: links and any
+    // future external links pass through untouched.
+    if (link.getAttribute('href') !== '/') return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    e.preventDefault();
+    if (!page || reduceMotion) {
+      window.location.href = link.href;
+      return;
+    }
+    page.classList.add('cu-leaving');
+    window.setTimeout(function () {
+      window.location.href = link.href;
+    }, LEAVE_MS);
+  });
+})();
+</script>
 
 <!-- Calendly badge widget begin -->
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
