@@ -70,7 +70,16 @@ a { color: inherit; }
 /* Only one screen is ever mounted at a time (React swaps components rather
    than toggling display:none like the original vanilla-JS version), so this
    just supplies the shared layout, no active/inactive class needed. */
-.screen { display: flex; min-height: calc(100vh - 160px); align-items: center; padding: 56px 0 40px; }
+.screen { display: flex; min-height: calc(100vh - 160px); align-items: center; padding: 56px 0 40px; animation: screen-enter 0.32s ease both; }
+
+/* Every screen (gate, services, each funnel/readout) shares this class, and
+   React always mounts a fresh instance on a screen switch — including the
+   header's "Cheema Capital" and "What we do" buttons — so this animation
+   plays automatically on every transition with no JS state to manage. */
+@keyframes screen-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* ---- Gate screens ---- */
 .gate { max-width: 680px; text-align: left; }
@@ -241,4 +250,5 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .progress__fill, .option-btn, .btn { transition: none; }
+  .screen { animation: none; }
 }
