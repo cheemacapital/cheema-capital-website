@@ -46,10 +46,11 @@
   .site-header__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
   .wordmark { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--navy-950); text-decoration: none; }
   .header-link { font-size: 0.95rem; font-weight: 600; text-decoration: none; color: var(--navy-800); border-bottom: 2px solid var(--gold-500); padding-bottom: 2px; }
+  .site-header__nav { display: flex; align-items: center; gap: 22px; }
 
   .bk-main { padding: 64px 0 80px; }
   .bk-content { max-width: 680px; margin: 0 auto; }
-  .bk-lead { font-family: var(--font-prose); font-weight: 400; font-size: 1.15rem; line-height: 1.65; color: var(--ink-600); margin: 0 0 40px; max-width: 600px; }
+  .bk-lead { font-family: var(--font-display); font-weight: 600; line-height: 1.15; color: var(--navy-950); margin: 0 0 40px; max-width: 700px; font-size: clamp(2rem, 5vw, 2.75rem); }
   .bk-embed-wrap { border: 1px solid var(--paper-100); border-radius: 14px; overflow: hidden; background: var(--paper-050); }
 
   .site-footer { border-top: 1px solid var(--paper-100); }
@@ -83,7 +84,10 @@
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a href="/" class="wordmark">Cheema Capital</a>
-    <a href="/" class="header-link">What we do</a>
+    <div class="site-header__nav">
+      <a href="/" class="header-link">What we do</a>
+      <a href="/who-we-are/" class="header-link">Who we are</a>
+    </div>
   </div>
 </header>
 
@@ -127,9 +131,10 @@
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a');
     if (!link) return;
-    // Only intercept the same-site nav links (wordmark, "What we do") —
-    // mailto: links pass through untouched.
-    if (link.getAttribute('href') !== '/') return;
+    // Only intercept the same-site nav links (wordmark, "What we do",
+    // "Who we are") — mailto: links pass through untouched.
+    var href = link.getAttribute('href');
+    if (href !== '/' && href !== '/who-we-are/') return;
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
     e.preventDefault();
