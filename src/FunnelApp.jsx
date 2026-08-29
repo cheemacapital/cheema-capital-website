@@ -301,7 +301,7 @@ export default function FunnelApp() {
       screenEl = <AspiringReadoutScreen answers={aAnswers} sessionId={sessionId} onRestart={goToGate} />;
       break;
     case 'services':
-      screenEl = <ServicesScreen onTakeDiagnostic={goToGate} />;
+      screenEl = <ServicesScreen onTakeDiagnostic={goToGate} onWhoWeAreClick={() => navigateExternal('/who-we-are/')} />;
       break;
     default:
       screenEl = <GateScreen onYes={handleGateYes} onNo={handleGateNo} />;
@@ -309,12 +309,7 @@ export default function FunnelApp() {
 
   return (
     <>
-      <Header
-        onLogoClick={goToGate}
-        onServicesClick={goToServices}
-        onWhoWeAreClick={() => navigateExternal('/who-we-are/')}
-        onBookClick={() => navigateExternal('/book/')}
-      />
+      <Header onLogoClick={goToGate} onServicesClick={goToServices} onBookClick={() => navigateExternal('/book/')} />
       <main className={leaving ? 'main-leaving' : ''}>{screenEl}</main>
       <Footer />
     </>

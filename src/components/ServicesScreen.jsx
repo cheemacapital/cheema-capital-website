@@ -1,4 +1,15 @@
-export default function ServicesScreen({ onTakeDiagnostic }) {
+export default function ServicesScreen({ onTakeDiagnostic, onWhoWeAreClick }) {
+  // /who-we-are is a real page outside the SPA (like /book), so this is a
+  // plain <a>, not a button — but intercept ordinary clicks to run the same
+  // fade-out the rest of the app uses (onWhoWeAreClick -> navigateExternal
+  // in FunnelApp.jsx) instead of cutting away instantly. Modified clicks
+  // (new tab, new window) pass through untouched.
+  function handleWhoWeAreClick(e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    onWhoWeAreClick();
+  }
+
   return (
     <section className="screen" aria-live="polite">
       <div className="wrap simple-page">
@@ -19,7 +30,7 @@ export default function ServicesScreen({ onTakeDiagnostic }) {
         </p>
         <div className="simple-page__actions">
           <button type="button" className="btn btn--primary btn--large" onClick={onTakeDiagnostic}>Take the diagnostic</button>
-          <a href="mailto:hello@cheemacapital.ai" className="btn-text">Email us</a>
+          <a href="/who-we-are/" className="btn btn--gold btn--large" onClick={handleWhoWeAreClick}>Who we are</a>
         </div>
       </div>
     </section>

@@ -111,7 +111,6 @@
     <a href="/" class="cu-wordmark">Cheema Capital</a>
     <div class="cu-header__nav">
       <a href="/" class="cu-header-link">What we do</a>
-      <a href="/who-we-are/" class="cu-header-link">Who we are</a>
       <a href="/book/" class="cu-header-book-btn">Book a call</a>
     </div>
   </div>
@@ -193,11 +192,10 @@
     var link = e.target.closest('a');
     if (!link) return;
     // Only intercept the same-site nav links (wordmark, "What we do",
-    // "Take the diagnostic" -> "/"; "Who we are" -> "/who-we-are/";
-    // "Book a call" -> "/book/") — mailto: links and any future external
-    // links pass through untouched.
+    // "Take the diagnostic" -> "/"; "Book a call" -> "/book/") — mailto:
+    // links and any future external links pass through untouched.
     var href = link.getAttribute('href');
-    if (href !== '/' && href !== '/book/' && href !== '/who-we-are/') return;
+    if (href !== '/' && href !== '/book/') return;
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
     e.preventDefault();
