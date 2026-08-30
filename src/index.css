@@ -56,9 +56,10 @@ a { color: inherit; }
 .site-header__nav { display: flex; align-items: center; gap: 22px; }
 .header-book-btn { font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; text-decoration: none; color: var(--white); background: var(--navy-950); padding: 9px 18px; border-radius: 8px; transition: background 0.15s ease, transform 0.1s ease; }
 .header-book-btn:hover { background: var(--navy-800); transform: translateY(-1px); }
-.site-footer__inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px; }
+.site-footer__inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px 20px; }
 .site-footer__inner a { text-decoration: none; }
 .site-footer__inner a:hover { text-decoration: underline; }
+.site-footer__links { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 
 /* Only one screen is ever mounted at a time (React swaps components rather
    than toggling display:none like the original vanilla-JS version), so this

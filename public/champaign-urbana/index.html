@@ -74,9 +74,10 @@
   }
 
   .cu-footer { border-top: 1px solid var(--navy-800); position: relative; z-index: 1; }
-  .cu-footer__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 26px; padding-bottom: 26px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px; }
+  .cu-footer__inner { display: flex; align-items: center; justify-content: space-between; padding-top: 26px; padding-bottom: 26px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px 20px; }
   .cu-footer__inner a { color: var(--ink-600); text-decoration: none; }
   .cu-footer__inner a:hover { text-decoration: underline; }
+  .cu-footer__links { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 
   @media (max-width: 560px) {
     .cu-header__nav { gap: 10px; }
@@ -159,7 +160,11 @@
 <footer class="cu-footer">
   <div class="wrap cu-footer__inner">
     <span>© 2026 Cheema Capital</span>
-    <a href="mailto:hello@cheemacapital.ai">hello@cheemacapital.ai</a>
+    <div class="cu-footer__links">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="mailto:hello@cheemacapital.ai">hello@cheemacapital.ai</a>
+    </div>
   </div>
 </footer>
 
@@ -194,7 +199,7 @@
     // "Take the diagnostic" -> "/"; "Book a call" -> "/book/") — mailto:
     // links and any future external links pass through untouched.
     var href = link.getAttribute('href');
-    if (href !== '/' && href !== '/book/') return;
+    if (href !== '/' && href !== '/book/' && href !== '/privacy/' && href !== '/terms/') return;
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
     e.preventDefault();

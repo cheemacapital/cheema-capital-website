@@ -78,9 +78,10 @@
   }
 
   .site-footer { border-top: 1px solid var(--paper-100); }
-  .site-footer__inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px; }
+  .site-footer__inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px 20px; }
   .site-footer__inner a { color: var(--ink-600); text-decoration: none; }
   .site-footer__inner a:hover { text-decoration: underline; }
+  .site-footer__links { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 
   @media (max-width: 560px) {
     .site-header__nav { gap: 12px; }
@@ -152,7 +153,11 @@
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <span>© 2026 Cheema Capital</span>
-    <a href="mailto:hello@cheemacapital.ai">hello@cheemacapital.ai</a>
+    <div class="site-footer__links">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="mailto:hello@cheemacapital.ai">hello@cheemacapital.ai</a>
+    </div>
   </div>
 </footer>
 
@@ -187,7 +192,7 @@
     // "/"; "Book a call" -> "/book/") — mailto: links pass through
     // untouched.
     var href = link.getAttribute('href');
-    if (href !== '/' && href !== '/book/') return;
+    if (href !== '/' && href !== '/book/' && href !== '/privacy/' && href !== '/terms/') return;
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
     e.preventDefault();

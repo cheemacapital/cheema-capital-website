@@ -53,9 +53,10 @@
   .bk-embed-wrap { border: 1px solid var(--paper-100); border-radius: 14px; overflow: hidden; background: var(--paper-050); }
 
   .site-footer { border-top: 1px solid var(--paper-100); }
-  .site-footer__inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px; }
+  .site-footer__inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px; font-size: 0.9rem; color: var(--ink-600); flex-wrap: wrap; gap: 8px 20px; }
   .site-footer__inner a { color: var(--ink-600); text-decoration: none; }
   .site-footer__inner a:hover { text-decoration: underline; }
+  .site-footer__links { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 
   @media (max-width: 560px) {
     .site-footer__inner { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -103,7 +104,11 @@
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <span>© 2026 Cheema Capital</span>
-    <a href="mailto:hello@cheemacapital.ai">hello@cheemacapital.ai</a>
+    <div class="site-footer__links">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="mailto:hello@cheemacapital.ai">hello@cheemacapital.ai</a>
+    </div>
   </div>
 </footer>
 
